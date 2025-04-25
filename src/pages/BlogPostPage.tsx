@@ -23,7 +23,6 @@ const BlogPostPage: React.FC = () => {
     return null;
   }
   
-  // Define animation variants for staggered animations
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 

@@ -21,25 +21,20 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update scrolled state for shadow effect
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 20);
       
-      // Track if scrolling has started
       if (scrollY > 50) {
         setHasStartedScrolling(true);
       } else if (scrollY === 0) {
         setHasStartedScrolling(false);
       }
       
-      // Calculate scroll progress for blog posts with debouncing for smoothness
       if (isBlogPost) {
-        // Clear previous timeout if it exists
         if (scrollTimeoutRef.current) {
           cancelAnimationFrame(scrollTimeoutRef.current);
         }
         
-        // Schedule the update with requestAnimationFrame for smooth animation
         scrollTimeoutRef.current = requestAnimationFrame(() => {
           const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
           const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -51,19 +46,16 @@ const Navbar: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     
-    // Initial call to set correct state
     handleScroll();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      // Clean up any pending animation frame
       if (scrollTimeoutRef.current) {
         cancelAnimationFrame(scrollTimeoutRef.current);
       }
     };
   }, [isBlogPost]);
 
-  // Close menu when location changes
   useEffect(() => {
     setIsMenuOpen(false);
     setHasStartedScrolling(false);
@@ -90,7 +82,7 @@ const Navbar: React.FC = () => {
           </motion.span>
         </Link>
 
-        {/* Mobile Menu Backdrop */}
+        {/* mobile menu backdrop */}
         {isMenuOpen && (
           <motion.div 
             className="navbar-backdrop"
@@ -101,7 +93,7 @@ const Navbar: React.FC = () => {
           />
         )}
 
-        {/* Mobile Menu */}
+        {/* mobile menu */}
         <motion.div 
           className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}
           variants={{
@@ -122,7 +114,7 @@ const Navbar: React.FC = () => {
           </nav>
         </motion.div>
 
-        {/* Desktop Actions */}
+        {/* desktop actions */}
         <div className="navbar-actions">
           <ThemeToggle />
           <button 
@@ -135,7 +127,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Reading Progress Bar for Blog Posts - only show when scrolling has begun */}
+      {/* reading progress bar for blog posts */}
       {isBlogPost && hasStartedScrolling && (
         <div className="navbar-progress-container">
           <div 

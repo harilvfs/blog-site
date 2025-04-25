@@ -24,13 +24,10 @@ const ReadingProgressBar: React.FC<ReadingProgressBarProps> = ({
       setWidth(scrollPercentRounded);
     };
 
-    // Add scroll event listener
     window.addEventListener('scroll', updateProgressBar);
     
-    // Initial calculation
     updateProgressBar();
 
-    // Cleanup
     return () => window.removeEventListener('scroll', updateProgressBar);
   }, []);
 

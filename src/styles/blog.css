@@ -1,4 +1,3 @@
-/* Blog List Page */
 .blog-list-page {
   padding: 6rem 0;
 }
@@ -130,7 +129,6 @@
   gap: 2.5rem;
 }
 
-/* No Results */
 .no-results {
   grid-column: 1 / -1;
   padding: 4rem 2rem;
@@ -161,7 +159,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .blog-list-page {
     padding: 4rem 0;

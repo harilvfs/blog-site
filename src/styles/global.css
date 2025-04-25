@@ -176,7 +176,6 @@ a:hover {
   color: white;
 }
 
-/* Card styles */
 .card {
   background-color: var(--card-bg);
   border-radius: var(--border-radius);

@@ -40,7 +40,6 @@ const BlogListPage: React.FC = () => {
     setSelectedTag(prev => prev === tag ? null : tag);
   };
   
-  // Shared transition parameters for consistency
   const springTransition = {
     type: "spring",
     damping: 12,
@@ -48,7 +47,6 @@ const BlogListPage: React.FC = () => {
     mass: 0.9
   };
   
-  // Parent container animation
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -60,7 +58,6 @@ const BlogListPage: React.FC = () => {
     }
   };
   
-  // Child element animations - consistent with BlogCard
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 

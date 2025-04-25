@@ -12,7 +12,6 @@ interface BlogCardProps {
   tags?: string[];
 }
 
-// Card animation variants
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
