@@ -6,7 +6,7 @@ const blogPosts: BlogPost[] = [
     title: 'Getting Started with React and TypeScript',
     slug: 'getting-started-with-react-and-typescript',
     excerpt: 'Learn how to set up a new React project with TypeScript and understand the basics of TypeScript in React components.',
-    date: 'May 15, 2023',
+    date: 'April 23, 2025',
     content: `
 # Getting Started with React and TypeScript
 
@@ -75,7 +75,7 @@ Using TypeScript with React provides several benefits:
 
 React and TypeScript are a great combination for building maintainable web applications. The initial learning curve is worth the long-term benefits in code quality and developer productivity.
 `,
-    coverImage: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     tags: ['React', 'TypeScript', 'Web Development']
   },
   {
@@ -83,7 +83,7 @@ React and TypeScript are a great combination for building maintainable web appli
     title: 'Building Beautiful Animations with Framer Motion',
     slug: 'building-beautiful-animations-with-framer-motion',
     excerpt: 'Explore how to create smooth, performant animations in your React applications using the Framer Motion library.',
-    date: 'June 3, 2023',
+    date: 'April 24, 2025',
     content: `
 # Building Beautiful Animations with Framer Motion
 
@@ -267,7 +267,7 @@ Framer Motion offers a delightful way to add animations to your React applicatio
 
 By adding thoughtful animations to your UI, you can significantly improve the user experience and make your applications feel more polished and professional.
 `,
-    coverImage: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1616440347437-b1c73416efc2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     tags: ['React', 'Animation', 'Framer Motion']
   },
   {
@@ -275,7 +275,7 @@ By adding thoughtful animations to your UI, you can significantly improve the us
     title: 'Creating a Markdown Blog with React',
     slug: 'creating-a-markdown-blog-with-react',
     excerpt: 'Learn how to build a blog that renders content from Markdown files using React and related libraries.',
-    date: 'July 10, 2023',
+    date: 'April 25, 2025',
     content: `
 # Creating a Markdown Blog with React
 
@@ -489,7 +489,7 @@ Building a Markdown blog with React gives you a flexible and powerful platform f
 
 With this foundation, you're well on your way to creating a beautiful and functional Markdown-powered blog!
 `,
-    coverImage: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
     tags: ['React', 'Markdown', 'Blog']
   }
 ];
