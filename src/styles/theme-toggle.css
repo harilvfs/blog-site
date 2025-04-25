@@ -53,6 +53,10 @@
   transform: translateX(24px);
 }
 
+:root:not(.dark-theme) .theme-toggle-thumb {
+  transform: translateX(0);
+}
+
 .theme-toggle-icons {
   position: absolute;
   top: 0;

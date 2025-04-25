@@ -26,6 +26,27 @@
   --font-serif: 'Playfair Display', Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
+:root:not(.dark-theme) {
+  --primary-color: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --primary-rgb: 99, 102, 241;
+  --secondary-color: #10b981;
+  --accent-color: #f59e0b;
+  --text-color: #1f2937;
+  --text-muted: #4b5563;
+  --background-color: #ffffff;
+  --background-color-rgb: 255, 255, 255;
+  --light-gray: #f3f4f6;
+  --medium-gray: #e5e7eb;
+  --dark-gray: #9ca3af;
+  --hover-bg: rgba(99, 102, 241, 0.1);
+  --card-bg: #ffffff;
+  --card-bg-hover: #f9fafb;
+  --primary-light-transparent: rgba(99, 102, 241, 0.15);
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
 .dark-theme {
   --primary-color: #818cf8;
   --primary-dark: #6366f1;

@@ -32,10 +32,10 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       
       setIsDarkMode(initialTheme);
       
+      document.documentElement.classList.remove('dark-theme');
+      
       if (initialTheme) {
         document.documentElement.classList.add('dark-theme');
-      } else {
-        document.documentElement.classList.remove('dark-theme');
       }
 
       document.documentElement.classList.add('theme-initialized');
@@ -56,10 +56,10 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       
       localStorage.setItem('theme', newTheme ? 'dark' : 'light');
       
+      document.documentElement.classList.remove('dark-theme');
+      
       if (newTheme) {
         document.documentElement.classList.add('dark-theme');
-      } else {
-        document.documentElement.classList.remove('dark-theme');
       }
       
       return newTheme;

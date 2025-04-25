@@ -36,7 +36,8 @@ const ThemeToggle: React.FC = () => {
         <motion.div 
           className="theme-toggle-thumb"
           animate={{ 
-            backgroundColor: isDarkMode ? "#818cf8" : "#6366f1" 
+            backgroundColor: isDarkMode ? "#818cf8" : "#6366f1",
+            transform: isDarkMode ? "translateX(24px)" : "translateX(0px)"
           }}
           initial={false}
           transition={{ 
