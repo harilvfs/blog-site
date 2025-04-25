@@ -10,7 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -44,10 +43,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # Ensure CNAME file exists in the build folder
       - name: Setup CNAME
         run: |
-          # Create or ensure CNAME file in build folder
           echo "harilvfs.github.io/blog-site" > build/CNAME
 
       - name: Deploy to GitHub Pages
