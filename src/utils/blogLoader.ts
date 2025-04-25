@@ -3,10 +3,301 @@ import { BlogPost, BlogPostMeta } from './types';
 const blogPosts: BlogPost[] = [
   {
     id: '1',
+    title: 'Installing Python and Setting Up a Virtual Environment',
+    slug: 'installing-python-and-setting-up-a-virtual-environment',
+    excerpt: 'A comprehensive guide on installing Python and setting up a virtual environment without using pip.',
+    date: 'February 20, 2025',
+    content: `
+# Installing Python and Setting Up a Virtual Environment
+
+## Introduction
+Python is a powerful programming language widely used for development, scripting, and automation. This guide will walk you through installing Python on Arch Linux or any Arch-based distribution and setting up a virtual environment without relying on \`pip\`. If you encounter \`pip\` errors, we will also explain the reasons and solutions.
+
+## Installing Python
+On Arch Linux, you can install Python easily using the package manager:
+
+\`\`\`bash
+sudo pacman -S python
+\`\`\`
+
+This will install the latest version of Python available in the official Arch repositories.
+
+## Why Avoid \`pip\` for Installing Python Packages?
+Many users rely on \`pip\` for installing Python packages, but using \`pip\` system-wide can lead to conflicts with system packages managed by \`pacman\`. This can cause issues when upgrading your system or installing software that depends on specific Python versions.
+
+## Setting Up a Virtual Environment
+A virtual environment allows you to create an isolated Python environment, preventing conflicts with system packages. To set up a virtual environment:
+
+1. Navigate to your project directory:
+   \`\`\`bash
+   mkdir my_project && cd my_project
+   \`\`\`
+
+2. Create a virtual environment using \`venv\`:
+   \`\`\`bash
+   python -m venv venv
+   \`\`\`
+
+3. Activate the virtual environment:
+   - For Bash/Zsh:
+     \`\`\`bash
+     source venv/bin/activate
+     \`\`\`
+   - For Fish shell:
+     \`\`\`bash
+     source venv/bin/activate.fish
+     \`\`\`
+
+4. Your terminal prompt should now indicate that you are inside a virtual environment.
+
+## Handling \`pip\` Errors
+If you encounter errors when using \`pip\`, it may be due to missing dependencies or conflicts with system packages. Some common errors include:
+
+- **Command Not Found**: Ensure \`python-ensurepip\` is installed:
+  \`\`\`bash
+  sudo pacman -S python-ensurepip
+  \`\`\`
+
+- **SSL Errors**: Some systems may require certificates to be installed:
+  \`\`\`bash
+  sudo pacman -S ca-certificates-mozilla
+  \`\`\`
+
+- **Permission Errors**: Avoid using \`pip\` with \`sudo\`. Instead, always install packages inside a virtual environment.
+  \`\`\`bash
+  pip install package_name
+  \`\`\`
+
+## Conclusion
+Using a virtual environment is the best practice for Python development, as it isolates project dependencies and prevents system conflicts. By following this guide, you now have a clean and efficient Python setup that avoids modifying system-wide packages.
+`,
+    coverImage: 'https://raw.githubusercontent.com/harilvfs/blogs/refs/heads/main/content/post/python-pip/python.jpg',
+    tags: ['Python', 'Virtual Environment', 'Arch Linux']
+  },
+  {
+    id: '2',
+    title: 'Comprehensive Guide to Creating and Uploading an AUR Package',
+    slug: 'comprehensive-guide-to-creating-and-uploading-an-aur-package',
+    excerpt: 'Step-by-step guide to creating, building, and submitting a package to the Arch User Repository (AUR).',
+    date: 'February 19, 2025',
+    content: `
+# Comprehensive Guide to Creating and Uploading an AUR Package
+
+This guide provides a step-by-step tutorial on how to create, build, and upload a package to the Arch User Repository (AUR). Follow along to learn the entire process from setting up SSH keys to publishing your package.
+
+## Step 1: Set Up SSH Keys for AUR Access
+
+Before you can push to the AUR, you need to set up SSH authentication.
+
+\`\`\`sh
+ssh-keygen -t rsa -b 4096 -C "your.email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
+\`\`\`
+
+Copy the output and add it to your [AUR account](https://aur.archlinux.org/account/) under the SSH key section.
+
+To verify SSH connectivity:
+
+\`\`\`sh
+ssh aur@aur.archlinux.org
+\`\`\`
+
+If successful, you should see a welcome message.
+
+## Step 2: Create and Structure Your AUR Package
+
+Now, create a directory for your package:
+
+\`\`\`sh
+mkdir carch
+cd carch
+\`\`\`
+
+Create the \`PKGBUILD\` file:
+
+\`\`\`sh
+touch PKGBUILD
+\`\`\`
+
+Edit \`PKGBUILD\` with the following template:
+
+\`\`\`sh
+# Maintainer: Your Name <your.email@example.com>
+pkgname="carch"
+pkgver="1.0.0"
+pkgrel=1
+pkgdesc="A script to automate Arch Linux setup"
+arch=('x86_64')
+url="https://harilvfs.github.io/carch/"
+license=('MIT')
+depends=('bash' 'libnewt')
+source=("https://github.com/yourusername/carch/releases/download/v$pkgver/carch"
+        "https://raw.githubusercontent.com/yourusername/carch/main/carch.desktop")
+sha256sums=('SKIP' 'SKIP')
+
+package() {
+    install -Dm755 "$srcdir/carch" "$pkgdir/usr/bin/carch"
+    install -Dm644 "$srcdir/carch.desktop" "$pkgdir/usr/share/applications/carch.desktop"
+}
+\`\`\`
+
+## Step 3: Generate \`.SRCINFO\`
+
+Generate the \`.SRCINFO\` file:
+
+\`\`\`sh
+makepkg --printsrcinfo > .SRCINFO
+\`\`\`
+
+## Step 4: Initialize Git and Push to AUR
+
+Now, initialize the Git repository and push the package to AUR.
+
+\`\`\`sh
+git init
+git add .
+git commit -m "Initial release of Carch"
+git remote add aur ssh://aur@aur.archlinux.org/carch.git
+git push aur master
+\`\`\`
+
+## Step 5: Install and Test the AUR Package
+
+Once your package is uploaded, install it using an AUR helper like \`yay\` or \`paru\`:
+
+\`\`\`sh
+yay -S carch
+\`\`\`
+
+Or manually clone and build:
+
+\`\`\`sh
+git clone https://aur.archlinux.org/carch.git
+cd carch
+makepkg -si
+\`\`\`
+
+## Additional Notes
+
+- If you update your package, bump the \`pkgver\`, regenerate \`.SRCINFO\`, commit, and push the changes.
+- Use \`makepkg -cf\` to test builds before uploading.
+- Ensure all dependencies are correctly listed.
+`,
+    coverImage: 'https://raw.githubusercontent.com/harilvfs/blogs/refs/heads/main/content/post/aur-package/archlinuxb.png',
+    tags: ['PKGBUILD', 'AUR', 'Arch Linux']
+  },
+  {
+    id: '3',
+    title: 'Install Chaotic AUR on Arch Linux',
+    slug: 'install-chaotic-aur-on-arch-linux',
+    excerpt: 'A clean and enhanced guide to installing Chaotic AUR on Arch Linux and its derivatives.',
+    date: 'February 18, 2025',
+    content: `
+# Install Chaotic AUR on Arch Linux
+
+Chaotic AUR is an unofficial repository that provides pre-built binaries of popular AUR packages, reducing the need to compile them manually. This guide will walk you through setting it up on Arch Linux or any Arch-based distribution.
+
+## Adding Chaotic AUR Repository
+
+To enable Chaotic AUR, follow these steps:
+
+### 1. Enable \`multilib\` Repository (if not already enabled)
+Ensure that the \`multilib\` repository is enabled in your \`/etc/pacman.conf\` file:
+
+\`\`\`bash
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+\`\`\`
+
+After enabling, update the package database:
+
+\`\`\`bash
+sudo pacman -Sy
+\`\`\`
+
+### 2. Import the Chaotic AUR Key
+Before adding the repository, import the signing key:
+
+\`\`\`bash
+sudo pacman-key --init
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
+\`\`\`
+
+### 3. Add the Chaotic AUR Repository
+Append the following lines to your \`/etc/pacman.conf\` file:
+
+\`\`\`bash
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+\`\`\`
+
+Next, add the Chaotic mirrorlist:
+
+\`\`\`bash
+sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+\`\`\`
+
+### 4. Update Package Database
+Now, refresh the package database to include Chaotic AUR:
+
+\`\`\`bash
+sudo pacman -Sy
+\`\`\`
+
+## Installing Packages from Chaotic AUR
+You can now install pre-built AUR packages using Pacman. For example:
+
+\`\`\`bash
+sudo pacman -Syu package_name
+\`\`\`
+
+Replace \`package_name\` with the actual package you want to install.
+
+### Example: Installing \`paru\` (AUR Helper)
+
+\`\`\`bash
+sudo pacman -S paru
+\`\`\`
+
+## Verifying Installation
+To confirm that Chaotic AUR is set up correctly, list available packages:
+
+\`\`\`bash
+sudo pacman -Sl chaotic-aur | less
+\`\`\`
+
+## Removing Chaotic AUR (Optional)
+If you wish to remove Chaotic AUR, follow these steps:
+
+1. Remove Chaotic AUR entries from \`/etc/pacman.conf\`.
+2. Delete the mirrorlist:
+
+\`\`\`bash
+sudo rm -f /etc/pacman.d/chaotic-mirrorlist
+\`\`\`
+
+3. Refresh the package database:
+
+\`\`\`bash
+sudo pacman -Sy
+\`\`\`
+
+## Conclusion
+Chaotic AUR is a great way to install AUR packages without compiling them manually. By following this guide, you can easily set up and use Chaotic AUR on your Arch-based system.
+`,
+    coverImage: 'https://raw.githubusercontent.com/harilvfs/blogs/refs/heads/main/content/post/chaotic-aur/arch.jpg',
+    tags: ['arch linux', 'chaotic aur', 'aur', 'linux']
+  },
+    {
+    id: '4',
     title: 'Getting Started with React and TypeScript',
     slug: 'getting-started-with-react-and-typescript',
     excerpt: 'Learn how to set up a new React project with TypeScript and understand the basics of TypeScript in React components.',
-    date: 'April 23, 2025',
+    date: 'Jan 23, 2025',
     content: `
 # Getting Started with React and TypeScript
 
@@ -79,11 +370,11 @@ React and TypeScript are a great combination for building maintainable web appli
     tags: ['React', 'TypeScript', 'Web Development']
   },
   {
-    id: '2',
+    id: '5',
     title: 'Building Beautiful Animations with Framer Motion',
     slug: 'building-beautiful-animations-with-framer-motion',
     excerpt: 'Explore how to create smooth, performant animations in your React applications using the Framer Motion library.',
-    date: 'April 24, 2025',
+    date: 'Jan 24, 2025',
     content: `
 # Building Beautiful Animations with Framer Motion
 
@@ -271,11 +562,11 @@ By adding thoughtful animations to your UI, you can significantly improve the us
     tags: ['React', 'Animation', 'Framer Motion']
   },
   {
-    id: '3',
+    id: '6',
     title: 'Creating a Markdown Blog with React',
     slug: 'creating-a-markdown-blog-with-react',
     excerpt: 'Learn how to build a blog that renders content from Markdown files using React and related libraries.',
-    date: 'April 25, 2025',
+    date: 'Jan 25, 2025',
     content: `
 # Creating a Markdown Blog with React
 
@@ -512,4 +803,4 @@ export const getBlogPostById = (id: string): BlogPost | undefined => {
 
 export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
   return blogPosts.find(post => post.slug === slug);
-}; 
+};
