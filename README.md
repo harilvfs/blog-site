@@ -39,4 +39,4 @@ Just edit the file: `src/utils/blogLoader.ts`
 
 ## License
 
-MIT License — check out the LICENSE file if you’re curious.
+MIT License — check out the [LICENSE](https://github.com/harilvfs/blog-site/blob/main/LICENSE) file if you’re curious.
