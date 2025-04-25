@@ -42,9 +42,9 @@ const BlogListPage: React.FC = () => {
   
   const springTransition = {
     type: "spring",
-    damping: 12,
-    stiffness: 100,
-    mass: 0.9
+    damping: 15,
+    stiffness: 80,
+    mass: 0.8
   };
   
   const containerVariants = {
@@ -53,18 +53,29 @@ const BlogListPage: React.FC = () => {
       opacity: 1,
       transition: {
         when: "beforeChildren",
-        staggerChildren: 0.08
+        staggerChildren: 0.06,
+        duration: 0.4
       }
     }
   };
   
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: springTransition
     }
+  };
+
+  const tagVariants = {
+    initial: { scale: 1 },
+    hover: { 
+      scale: 1.05,
+      y: -3,
+      transition: { duration: 0.2 }
+    },
+    tap: { scale: 0.95 }
   };
   
   return (
@@ -76,6 +87,26 @@ const BlogListPage: React.FC = () => {
           animate="visible"
           variants={containerVariants}
         >
+          <div className="header-decoration">
+            <motion.div 
+              className="decoration-orb"
+              animate={{
+                scale: [1, 1.15, 1],
+                opacity: [0.5, 0.7, 0.5],
+                y: [0, -10, 0]
+              }}
+              transition={{
+                duration: 6,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "mirror"
+              }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            />
+          </div>
+          
           <motion.h1 
             className="page-title"
             variants={itemVariants}
@@ -146,16 +177,41 @@ const BlogListPage: React.FC = () => {
               <motion.div 
                 className="tags-filter"
                 variants={itemVariants}
+                initial="hidden"
+                animate="visible"
               >
                 {allTags.map(tag => (
                   <motion.button
                     key={tag}
                     className={`tag-button ${selectedTag === tag ? 'active' : ''}`}
                     onClick={() => handleTagClick(tag)}
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                    initial="initial"
+                    whileHover="hover"
+                    whileTap="tap"
+                    variants={tagVariants}
+                    layout
                   >
-                    {tag}
+                    {selectedTag === tag ? (
+                      <motion.span className="tag-content">
+                        <svg 
+                          className="tag-icon" 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          width="14" 
+                          height="14" 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                        >
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        {tag}
+                      </motion.span>
+                    ) : (
+                      tag
+                    )}
                   </motion.button>
                 ))}
               </motion.div>
@@ -167,7 +223,8 @@ const BlogListPage: React.FC = () => {
           className="blog-grid"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post, index) => (

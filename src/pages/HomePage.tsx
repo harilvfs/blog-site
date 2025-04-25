@@ -29,7 +29,8 @@ const HomePage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
             >
-              Beautiful Minimalist <span className="accent">Blog</span>
+              👋 Hi!<br/>
+              I am <span className="accent">Aayush Chalise</span> aka harilvfs
             </motion.h1>
             <motion.p 
               className="hero-subtitle"
@@ -37,7 +38,8 @@ const HomePage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.15 }}
             >
-              A modern, cleanly designed blog built with React, TypeScript, and Framer Motion
+              A Linux enthusiast specializing in bash scripts and using Arch Linux. Love open source.
+              You can see my blogs as I write them in free time.
             </motion.p>
             <motion.div 
               className="hero-cta"

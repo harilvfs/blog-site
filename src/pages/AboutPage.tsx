@@ -30,27 +30,26 @@ const AboutPage: React.FC = () => {
             transition={{ delay: 0.1 }}
           >
             <p>
-              This is a minimalist blog built with React, TypeScript, and Framer Motion.
-              It features a clean design with subtle animations to enhance the user experience
-              without being distracting.
+              I am Aayush Chalise, a Linux enthusiast who loves working with Arch Linux and creating bash scripts.
+              I'm passionate about open source software and enjoy sharing my knowledge through this blog.
             </p>
             
-            <h2>Features</h2>
+            <h2>Interests</h2>
             <ul>
-              <li>Responsive design that works on all devices</li>
-              <li>Markdown support for easy content writing</li>
-              <li>Minimal and beautiful animations</li>
-              <li>TypeScript for type safety</li>
-              <li>Clean, accessible UI</li>
+              <li>Arch Linux customization and maintenance</li>
+              <li>Bash scripting and automation</li>
+              <li>Open source contributions</li>
+              <li>Linux system administration</li>
+              <li>Terminal-based applications</li>
             </ul>
             
             <h2>Technology Stack</h2>
             <ul>
-              <li>React for the UI</li>
-              <li>TypeScript for type safety</li>
-              <li>React Router for navigation</li>
-              <li>Framer Motion for animations</li>
-              <li>React Markdown for rendering Markdown content</li>
+              <li>Arch Linux</li>
+              <li>Bash scripts</li>
+              <li>Various open source tools</li>
+              <li>React for this blog</li>
+              <li>Git for version control</li>
             </ul>
           </motion.div>
         </motion.section>
