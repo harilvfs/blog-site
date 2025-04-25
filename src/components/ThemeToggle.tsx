@@ -8,8 +8,6 @@ const ThemeToggle: React.FC = () => {
   const [isInitialRender, setIsInitialRender] = useState(true);
   
   useEffect(() => {
-    // Set initial render to false after component mounts
-    // This helps prevent animation glitches on first render
     const timer = setTimeout(() => {
       setIsInitialRender(false);
     }, 50);

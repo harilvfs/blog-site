@@ -11,7 +11,6 @@ const BlogListPage: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   
-  // Extract all unique tags
   const allTags = Array.from(
     new Set(
       allPosts
@@ -20,7 +19,6 @@ const BlogListPage: React.FC = () => {
     )
   );
   
-  // Filter posts based on search term and selected tag
   const filteredPosts = allPosts.filter(post => {
     const matchesSearch = searchTerm.trim() === '' || 
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -36,7 +34,6 @@ const BlogListPage: React.FC = () => {
   });
 
   useEffect(() => {
-    // Scroll to top when page loads
     window.scrollTo(0, 0);
   }, []);
   

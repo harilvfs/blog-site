@@ -100,7 +100,6 @@
   opacity: 0.3;
 }
 
-/* Navbar-specific styling */
 .desktop-theme-toggle .theme-toggle {
   margin-right: 8px;
 }
@@ -111,7 +110,6 @@
   margin-top: 8px;
 }
 
-/* Mobile styling fixes */
 @media (max-width: 768px) {
   .nav-theme-toggle {
     margin: 1.5rem 0 0.5rem;

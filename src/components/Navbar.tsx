@@ -16,10 +16,8 @@ const Navbar: React.FC = () => {
   };
 
   useEffect(() => {
-    // Close menu when route changes
     setIsMenuOpen(false);
 
-    // Add scroll event listener
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);

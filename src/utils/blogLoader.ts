@@ -1,7 +1,5 @@
 import { BlogPost, BlogPostMeta } from './types';
 
-// This is a mock database of blog posts
-// In a real app, you'd fetch this data from an API or file system
 const blogPosts: BlogPost[] = [
   {
     id: '1',
@@ -496,7 +494,6 @@ With this foundation, you're well on your way to creating a beautiful and functi
   }
 ];
 
-// Get all blog posts (without full content for listing)
 export const getBlogPosts = (): BlogPostMeta[] => {
   return blogPosts.map(({ id, title, slug, excerpt, date, coverImage, tags }) => ({
     id,
@@ -509,12 +506,10 @@ export const getBlogPosts = (): BlogPostMeta[] => {
   }));
 };
 
-// Get a specific blog post by ID
 export const getBlogPostById = (id: string): BlogPost | undefined => {
   return blogPosts.find(post => post.id === id);
 };
 
-// Get a specific blog post by slug
 export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
   return blogPosts.find(post => post.slug === slug);
 }; 

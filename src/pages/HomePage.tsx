@@ -10,7 +10,6 @@ const HomePage: React.FC = () => {
   const recentPosts = getBlogPosts().slice(0, 3);
   
   useEffect(() => {
-    // Scroll to top when page loads
     window.scrollTo(0, 0);
   }, []);
   

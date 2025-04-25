@@ -134,7 +134,6 @@
   display: block;
 }
 
-/* Menu toggle button styles */
 .menu-toggle {
   position: relative;
   display: none;
@@ -251,12 +250,10 @@
   }
 }
 
-/* Initial loading state - prevent transitions until fully loaded */
 :root:not(.theme-initialized) * {
   transition: none !important;
 }
 
-/* Once initialized, allow transitions */
 :root.theme-initialized * {
   transition-property: inherit;
 } 

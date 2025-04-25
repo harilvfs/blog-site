@@ -1,6 +1,5 @@
 import { Variants } from 'framer-motion';
 
-// Fade in animation variants
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: { 
@@ -9,7 +8,6 @@ export const fadeIn: Variants = {
   }
 };
 
-// Slide up animation variants
 export const slideUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
@@ -19,7 +17,6 @@ export const slideUp: Variants = {
   }
 };
 
-// Staggered fade in for list items
 export const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -30,7 +27,6 @@ export const staggerContainer: Variants = {
   }
 };
 
-// Page transition variants
 export const pageTransition: Variants = {
   initial: { opacity: 0 },
   enter: { 

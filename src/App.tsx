@@ -9,7 +9,6 @@ import AboutPage from './pages/AboutPage';
 import { ThemeProvider } from './utils/ThemeContext';
 import './styles/global.css';
 
-// Wrapper component for page transitions
 const AnimatedRoutes = () => {
   const location = useLocation();
   
@@ -60,14 +59,13 @@ const AnimatedRoutes = () => {
             <AboutPage />
           </motion.div>
         } />
-        {/* Catch all route - redirect to home */}
+        {/* catch all route - redirect to home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </LazyMotion>
   );
 };
 
-// Layout component that wraps the main content
 const Layout = () => {
   return (
     <>

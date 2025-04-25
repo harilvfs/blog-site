@@ -16,7 +16,6 @@ const BlogPostPage: React.FC = () => {
       navigate('/blog');
       return;
     }
-    // Scroll to top when post loads
     window.scrollTo(0, 0);
   }, [post, navigate]);
   
