@@ -36,23 +36,17 @@ const Navbar: React.FC = () => {
     >
       <div className="container navbar-container">
         <Link to="/" className="navbar-logo">
-          <svg 
+          <img 
+            src="/blog-site/images/aayush.png" 
+            alt="Aayush" 
             className="navbar-logo-icon" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
-          </svg>
+          />
           <motion.span 
             className="logo-text"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Minimal<span className="logo-accent">Blog</span>
+            Aayush<span className="logo-accent">Blogs</span>
           </motion.span>
         </Link>
 

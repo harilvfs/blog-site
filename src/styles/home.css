@@ -176,13 +176,8 @@
 
 .recent-posts {
   padding: 5rem 0;
-  background-color: var(--light-gray);
   position: relative;
   z-index: 1;
-}
-
-.dark-theme .recent-posts {
-  background-color: var(--light-gray);
 }
 
 .section-header {
@@ -232,7 +227,6 @@
 
 .features {
   padding: 5rem 0;
-  background-color: var(--background-color);
 }
 
 .features-grid {

@@ -1,18 +1,19 @@
 :root {
-  --primary-color: #6366f1;
-  --primary-dark: #4f46e5;
-  --primary-light: #818cf8;
-  --secondary-color: #10b981;
-  --accent-color: #f97316;
-  --text-color: #1f2937;
-  --text-muted: #6b7280;
-  --background-color: #ffffff;
-  --light-gray: #f3f4f6;
-  --medium-gray: #e5e7eb;
-  --dark-gray: #9ca3af;
-  --hover-bg: rgba(99, 102, 241, 0.05);
-  --card-bg: #ffffff;
-  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --primary-color: #818cf8;
+  --primary-dark: #6366f1;
+  --primary-light: #a5b4fc;
+  --primary-rgb: 129, 140, 248;
+  --secondary-color: #34d399;
+  --accent-color: #fb923c;
+  --text-color: #f9fafb;
+  --text-muted: #9ca3af;
+  --background-color: #111827;
+  --light-gray: #1f2937;
+  --medium-gray: #374151;
+  --dark-gray: #6b7280;
+  --hover-bg: rgba(129, 140, 248, 0.1);
+  --card-bg: #1f2937;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
   --transition-timing: 0.3s ease;
   --container-width: 1280px;
   --border-radius: 0.75rem;
@@ -26,6 +27,7 @@
   --primary-color: #818cf8;
   --primary-dark: #6366f1;
   --primary-light: #a5b4fc;
+  --primary-rgb: 129, 140, 248;
   --secondary-color: #34d399;
   --accent-color: #fb923c;
   --text-color: #f9fafb;
@@ -75,6 +77,11 @@ a:hover {
   margin: 0 auto;
   padding: 0 1.5rem;
   width: 100%;
+}
+
+.main-content {
+  background-color: var(--background-color);
+  min-height: 100vh;
 }
 
 .blog-content {

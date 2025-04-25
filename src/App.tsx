@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { motion, LazyMotion, domAnimation } from 'framer-motion';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import BlogListPage from './pages/BlogListPage';
 import BlogPostPage from './pages/BlogPostPage';
@@ -73,6 +74,7 @@ const Layout = () => {
       <main className="main-content">
         <AnimatedRoutes />
       </main>
+      <Footer />
     </>
   );
 };
