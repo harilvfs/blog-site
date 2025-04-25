@@ -1,46 +1,87 @@
-# Getting Started with Create React App
+# Markdown Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A minimal and beautiful blog built with React, TypeScript, and Framer Motion. This blog renders content from Markdown and features subtle animations to enhance the user experience.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Responsive Design**: Works on all devices from mobile to desktop
+- **Markdown Support**: Write blog posts in Markdown format
+- **Beautiful Animations**: Subtle animations using Framer Motion
+- **TypeScript**: Full type safety throughout the application
+- **Search Functionality**: Filter blog posts by title, excerpt, or tags
+- **Clean UI**: Minimal design focused on content
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- TypeScript
+- React Router
+- Framer Motion
+- React Markdown
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v14 or higher)
+- npm or yarn
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/markdown-blog.git
+cd markdown-blog
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server
+```bash
+npm start
+# or
+yarn start
+```
 
-### `npm run eject`
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Project Structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+/src
+  /components       # Reusable UI components
+  /pages            # Page components
+  /styles           # CSS files
+  /utils            # Utility functions and types
+  /content          # Markdown content
+  /assets           # Static assets like images
+  App.tsx           # Main App component
+  index.tsx         # Entry point
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Adding Blog Posts
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Blog posts are currently loaded from a mock database in `src/utils/blogLoader.ts`. In a real-world application, you would typically:
 
-## Learn More
+1. Store Markdown files in the `/content` directory
+2. Parse frontmatter using a library like `gray-matter`
+3. Load content dynamically based on routes
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Customization
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Colors**: Update the color variables in `src/styles/global.css`
+- **Animations**: Modify animation parameters in `src/utils/animations.ts`
+- **Typography**: Change font styles in the CSS files
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details. 
