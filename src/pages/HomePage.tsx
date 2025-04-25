@@ -67,6 +67,27 @@ const HomePage: React.FC = () => {
           <div className="hero-decoration">
             <div className="hero-blob"></div>
             <div className="hero-circle"></div>
+            <motion.div
+              className="profile-image-container"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ 
+                opacity: 1, 
+                scale: 1
+              }}
+              transition={{ 
+                duration: 0.7
+              }}
+            >
+              <motion.img 
+                src="/blog-site/images/aayush.png" 
+                alt="Aayush" 
+                className="profile-image"
+                whileHover={{ 
+                  scale: 1.03,
+                  transition: { duration: 0.4 }
+                }}
+              />
+            </motion.div>
           </div>
         </div>
       </motion.section>
