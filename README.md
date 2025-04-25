@@ -1,6 +1,6 @@
 #### Hey! 👋 This is a chill little blog site made with React. Here’s how you can get it going.
 
-### Quick Start
+## Quick Start
 
 ```bash
 # Install everything you need
@@ -13,7 +13,7 @@ bun start
 bun run build
 ```
 
-### Deploying to GitHub Pages
+## Deploying to GitHub Pages
 
 This site auto-deploys using GitHub Actions:
 
@@ -24,7 +24,7 @@ This site auto-deploys using GitHub Actions:
 
 Your blog will show up at: `https://yourusername.github.io/blog-site`
 
-### What’s Inside
+## What’s Inside
 
 - React + TypeScript
 - Write posts using Markdown
@@ -32,11 +32,11 @@ Your blog will show up at: `https://yourusername.github.io/blog-site`
 - Super fast with Bun
 
 
-### Making It Yours
+## Making It Yours
 
 Wanna change the posts?
 Just edit the file: `src/utils/blogLoader.ts`
 
-### License
+## License
 
 MIT License — check out the LICENSE file if you’re curious.
