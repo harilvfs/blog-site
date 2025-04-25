@@ -2,8 +2,6 @@
 
 ### Quick Start
 
-<kbd>
-
 ```bash
 # Install everything you need
 bun install
@@ -14,8 +12,6 @@ bun start
 # Make a production build
 bun run build
 ```
-
-</kbd>
 
 ### Deploying to GitHub Pages
 
