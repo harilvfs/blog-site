@@ -32,7 +32,10 @@ jobs:
         run: bun install
       
       - name: Build
-        run: bun run build
+        run: |
+          bun run build
+          # Ensure base path is correct by adding a file at the root that confirms the repo name
+          echo "blog-site" > ./build/repo-name.txt
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

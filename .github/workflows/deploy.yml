@@ -44,6 +44,12 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      # Ensure CNAME file exists in the build folder
+      - name: Setup CNAME
+        run: |
+          # Create or ensure CNAME file in build folder
+          echo "harilvfs.github.io/blog-site" > build/CNAME
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4
