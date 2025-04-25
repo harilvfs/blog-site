@@ -1,0 +1,4 @@
+*.tsx linguist-language=React
+*.ts linguist-language=TypeScript
+*.css linguist-language=CSS
+*.html linguist-language=HTML 

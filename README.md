@@ -50,6 +50,40 @@ yarn start
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
+## Now powered by Bun!
+
+This project has been migrated from npm to [Bun](https://bun.sh/) for faster installation and development experience. Bun is a fast all-in-one JavaScript runtime and toolkit designed as a drop-in replacement for Node.js.
+
+### Benefits of using Bun:
+- Significantly faster dependency installation
+- Improved development server startup time
+- Better performance for TypeScript compilation
+- Smaller disk footprint
+- Simplified project setup
+
+### Development
+
+```bash
+# Install dependencies
+bun install
+
+# Start development server
+bun start
+
+# Build for production
+bun run build
+```
+
+If you don't have Bun installed, you can install it using:
+
+```bash
+# For macOS, Linux, and WSL
+curl -fsSL https://bun.sh/install | bash
+
+# Or with npm
+npm install -g bun
+```
+
 ## Project Structure
 
 ```

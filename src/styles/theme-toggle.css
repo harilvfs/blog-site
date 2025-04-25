@@ -1,0 +1,127 @@
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin: 0;
+  position: relative;
+  z-index: 10;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover-bg);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+  border-radius: 9999px;
+}
+
+.theme-toggle-track {
+  width: 52px;
+  height: 26px;
+  border-radius: 9999px;
+  position: relative;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  position: absolute;
+  left: 2px;
+  z-index: 2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transform: translateX(0);
+  will-change: transform, background-color;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.dark-theme .theme-toggle-thumb {
+  transform: translateX(24px);
+}
+
+.theme-toggle-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  z-index: 1;
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  transition: opacity 0.3s ease;
+}
+
+.theme-toggle-icon.sun {
+  color: #f59e0b;
+}
+
+.theme-toggle-icon.moon {
+  color: #f9fafb;
+}
+
+.dark-theme .theme-toggle-icon.sun {
+  opacity: 0.3;
+}
+
+.dark-theme .theme-toggle-icon.moon {
+  opacity: 1;
+}
+
+:not(.dark-theme) .theme-toggle-icon.sun {
+  opacity: 1;
+}
+
+:not(.dark-theme) .theme-toggle-icon.moon {
+  opacity: 0.3;
+}
+
+/* Navbar-specific styling */
+.desktop-theme-toggle .theme-toggle {
+  margin-right: 8px;
+}
+
+.nav-theme-toggle {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* Mobile styling fixes */
+@media (max-width: 768px) {
+  .nav-theme-toggle {
+    margin: 1.5rem 0 0.5rem;
+  }
+  
+  .nav-theme-toggle .theme-toggle {
+    margin: 0;
+  }
+  
+  .desktop-theme-toggle {
+    display: none;
+  }
+} 
