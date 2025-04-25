@@ -4,20 +4,15 @@
   <meta charset="utf-8">
   <title>Page Not Found</title>
   <script>
-    // Redirect to index.html to let the SPA handle routing
-    var pathSegmentsToKeep = 1; // Keep "/blog-site" segment for GitHub Pages project sites
+    // Simple SPA fallback for GitHub Pages
     var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
+    var repoName = "blog-site";
+    var newPath = l.pathname.replace("/" + repoName + "/", "/");
+    window.location.href = "/" + repoName + "/#" + newPath;
   </script>
 </head>
 <body>
   <h1>Page Not Found</h1>
-  <p>If you are not redirected automatically, <a href="/blog-site/">click here</a> to go to the homepage.</p>
+  <p>Redirecting to homepage...</p>
 </body>
 </html> 
