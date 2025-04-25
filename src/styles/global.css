@@ -8,11 +8,14 @@
   --text-color: #f9fafb;
   --text-muted: #9ca3af;
   --background-color: #111827;
+  --background-color-rgb: 17, 24, 39;
   --light-gray: #1f2937;
   --medium-gray: #374151;
   --dark-gray: #6b7280;
   --hover-bg: rgba(129, 140, 248, 0.1);
   --card-bg: #1f2937;
+  --card-bg-hover: #2a3441;
+  --primary-light-transparent: rgba(129, 140, 248, 0.15);
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
   --transition-timing: 0.3s ease;
   --container-width: 1280px;
@@ -33,11 +36,14 @@
   --text-color: #f9fafb;
   --text-muted: #9ca3af;
   --background-color: #111827;
+  --background-color-rgb: 17, 24, 39;
   --light-gray: #1f2937;
   --medium-gray: #374151;
   --dark-gray: #6b7280;
   --hover-bg: rgba(129, 140, 248, 0.1);
   --card-bg: #1f2937;
+  --card-bg-hover: #2a3441;
+  --primary-light-transparent: rgba(129, 140, 248, 0.15);
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
 }
 

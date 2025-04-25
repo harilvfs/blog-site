@@ -1,0 +1,25 @@
+.reading-progress-container {
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.reading-progress-bar {
+  height: 100%;
+  transition: width 0.1s ease;
+}
+
+.reading-progress-container.top {
+  top: 0;
+}
+
+.reading-progress-container.bottom {
+  bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress-bar {
+    transition: none !important;
+  }
+} 

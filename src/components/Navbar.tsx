@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTheme } from '../utils/ThemeContext';
@@ -8,71 +8,71 @@ import '../styles/navbar.css';
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [hideNavbar, setHideNavbar] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [hasStartedScrolling, setHasStartedScrolling] = useState(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
   const location = useLocation();
   const { isDarkMode } = useTheme();
+  const isBlogPost = location.pathname.startsWith('/blog/') && location.pathname !== '/blog/';
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Create a throttled scroll handler for better performance
-  const throttle = <T extends (...args: any[]) => any>(
-    callback: T,
-    delay: number
-  ) => {
-    let lastCall = 0;
-    return (...args: Parameters<T>) => {
-      const now = new Date().getTime();
-      if (now - lastCall < delay) {
-        return;
-      }
-      lastCall = now;
-      return callback(...args);
-    };
-  };
-
-  const handleScroll = useCallback(() => {
-    const currentScrollY = window.scrollY;
-    
-    // Show navbar when at the top, hide when scrolled down
-    if (currentScrollY < 30) {
-      setHideNavbar(false);
-    } else {
-      setHideNavbar(true);
-    }
-    
-    // Update the scroll state for shadow effect
-    setIsScrolled(currentScrollY > 20);
-    
-    // Update the last scroll position
-    setLastScrollY(currentScrollY);
-  }, []);
-
   useEffect(() => {
-    setIsMenuOpen(false);
+    const handleScroll = () => {
+      // Update scrolled state for shadow effect
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 20);
+      
+      // Track if scrolling has started
+      if (scrollY > 50) {
+        setHasStartedScrolling(true);
+      } else if (scrollY === 0) {
+        setHasStartedScrolling(false);
+      }
+      
+      // Calculate scroll progress for blog posts with debouncing for smoothness
+      if (isBlogPost) {
+        // Clear previous timeout if it exists
+        if (scrollTimeoutRef.current) {
+          cancelAnimationFrame(scrollTimeoutRef.current);
+        }
+        
+        // Schedule the update with requestAnimationFrame for smooth animation
+        scrollTimeoutRef.current = requestAnimationFrame(() => {
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          setScrollProgress(Math.min(100, Math.max(0, scrolled))); // Clamp between 0-100
+        });
+      }
+    };
 
-    const throttledHandleScroll = throttle(handleScroll, 50);
-    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     // Initial call to set correct state
     handleScroll();
     
-    return () => window.removeEventListener('scroll', throttledHandleScroll);
-  }, [handleScroll]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      // Clean up any pending animation frame
+      if (scrollTimeoutRef.current) {
+        cancelAnimationFrame(scrollTimeoutRef.current);
+      }
+    };
+  }, [isBlogPost]);
 
-  // Don't hide navbar when menu is open
+  // Close menu when location changes
   useEffect(() => {
-    if (isMenuOpen) {
-      setHideNavbar(false);
-    }
-  }, [isMenuOpen]);
+    setIsMenuOpen(false);
+    setHasStartedScrolling(false);
+    setScrollProgress(0);
+  }, [location]);
 
   return (
     <header 
-      className={`navbar ${isScrolled ? 'scrolled' : ''} ${hideNavbar ? 'hidden' : ''} ${isDarkMode ? 'dark' : 'light'}`}
-      aria-hidden={hideNavbar}
+      className={`navbar ${isScrolled ? 'scrolled' : ''} ${isDarkMode ? 'dark' : 'light'}`}
     >
       <div className="container navbar-container">
         <Link to="/" className="navbar-logo">
@@ -134,6 +134,16 @@ const Navbar: React.FC = () => {
           </button>
         </div>
       </div>
+
+      {/* Reading Progress Bar for Blog Posts - only show when scrolling has begun */}
+      {isBlogPost && hasStartedScrolling && (
+        <div className="navbar-progress-container">
+          <div 
+            className="navbar-progress-bar" 
+            style={{ width: `${scrollProgress}%` }}
+          ></div>
+        </div>
+      )}
     </header>
   );
 };

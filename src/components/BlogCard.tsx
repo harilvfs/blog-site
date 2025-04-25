@@ -12,6 +12,21 @@ interface BlogCardProps {
   tags?: string[];
 }
 
+// Card animation variants
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      type: "spring", 
+      damping: 12, 
+      stiffness: 100,
+      mass: 0.9
+    }
+  }
+};
+
 const BlogCard: React.FC<BlogCardProps> = ({ 
   id, 
   title, 
@@ -23,17 +38,37 @@ const BlogCard: React.FC<BlogCardProps> = ({
   return (
     <motion.article 
       className="blog-card"
-      whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
+      variants={cardVariants}
+      whileHover={{ 
+        y: -10, 
+        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+        transition: { 
+          type: "spring", 
+          stiffness: 300, 
+          damping: 15 
+        } 
+      }}
     >
       <Link to={`/blog/${id}`} className="blog-card-link">
         {coverImage && (
-          <div className="blog-card-image-container">
-            <img src={coverImage} alt={title} className="blog-card-image" />
+          <motion.div 
+            className="blog-card-image-container"
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }
+            }}
+          >
+            <motion.img 
+              src={coverImage} 
+              alt={title} 
+              className="blog-card-image" 
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.5 }
+              }}
+            />
             <div className="blog-card-overlay"></div>
-          </div>
+          </motion.div>
         )}
         <div className="blog-card-content">
           <div className="blog-card-meta">
@@ -41,18 +76,44 @@ const BlogCard: React.FC<BlogCardProps> = ({
             {tags && tags.length > 0 && (
               <div className="blog-card-tags">
                 {tags.slice(0, 2).map(tag => (
-                  <span key={tag} className="blog-card-tag">{tag}</span>
+                  <motion.span 
+                    key={tag} 
+                    className="blog-card-tag"
+                    whileHover={{ 
+                      y: -2, 
+                      backgroundColor: "var(--primary-color)",
+                      color: "white",
+                      transition: { duration: 0.2 }
+                    }}
+                  >
+                    {tag}
+                  </motion.span>
                 ))}
                 {tags.length > 2 && <span className="blog-card-tag-more">+{tags.length - 2}</span>}
               </div>
             )}
           </div>
-          <h2 className="blog-card-title">{title}</h2>
+          <motion.h2 
+            className="blog-card-title"
+            whileHover={{ 
+              x: 4, 
+              color: "var(--primary-color)",
+              transition: { duration: 0.2 }
+            }}
+          >
+            {title}
+          </motion.h2>
           <p className="blog-card-excerpt">{excerpt}</p>
           <motion.div 
             className="blog-card-read-more"
-            whileHover={{ x: 5 }}
-            transition={{ duration: 0.2 }}
+            whileHover={{ 
+              x: 8,
+              transition: { 
+                type: "spring", 
+                stiffness: 400, 
+                damping: 10 
+              }
+            }}
           >
             Read More
             <svg 

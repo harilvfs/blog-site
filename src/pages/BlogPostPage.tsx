@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getBlogPostById } from '../utils/blogLoader';
 import MarkdownRenderer from '../components/MarkdownRenderer';
-import { fadeIn } from '../utils/animations';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 import '../styles/blogpost.css';
 
 const BlogPostPage: React.FC = () => {
@@ -23,45 +23,80 @@ const BlogPostPage: React.FC = () => {
     return null;
   }
   
+  // Define animation variants for staggered animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        when: "beforeChildren",
+        staggerChildren: 0.15
+      }
+    }
+  };
+  
+  const elementVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        type: "spring", 
+        damping: 15, 
+        stiffness: 100 
+      }
+    }
+  };
+  
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 1.05 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { 
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1] 
+      }
+    }
+  };
+  
   return (
     <div className="blog-post-page">
+      <ScrollToTopButton />
       <motion.article 
         className="blog-post"
-        variants={fadeIn}
+        variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {post.coverImage && (
           <motion.div 
             className="post-hero"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={elementVariants}
           >
-            <div className="post-cover-container">
+            <motion.div 
+              className="post-cover-container"
+              variants={imageVariants}
+            >
               <img 
                 src={post.coverImage} 
                 alt={post.title} 
                 className="post-cover-image" 
               />
               <div className="post-cover-overlay"></div>
-            </div>
+            </motion.div>
             
             <div className="post-hero-content container">
               <motion.h1 
                 className="post-title"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
+                variants={elementVariants}
               >
                 {post.title}
               </motion.h1>
               
               <motion.div 
                 className="post-meta"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
+                variants={elementVariants}
               >
                 <time className="post-date">{post.date}</time>
                 {post.tags && post.tags.length > 0 && (
@@ -82,9 +117,7 @@ const BlogPostPage: React.FC = () => {
           <div className="container">
             <motion.header 
               className="post-header no-cover"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              variants={elementVariants}
             >
               <h1 className="post-title">{post.title}</h1>
               <div className="post-meta">
@@ -106,18 +139,14 @@ const BlogPostPage: React.FC = () => {
         <div className="container">
           <motion.div 
             className="post-content"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
+            variants={elementVariants}
           >
             <MarkdownRenderer content={post.content} />
           </motion.div>
           
           <motion.div 
             className="post-navigation"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
+            variants={elementVariants}
           >
             <button 
               onClick={() => navigate('/blog')}
