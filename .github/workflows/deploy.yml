@@ -10,6 +10,7 @@ permissions:
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -43,17 +44,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Setup CNAME
-        run: |
-          echo "harilvfs.github.io/blog-site" > build/CNAME
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
           branch: gh-pages
-          clean: true
-          clean-exclude: |
-            CNAME
-            .nojekyll 
+          clean: true 
