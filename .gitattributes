@@ -1,9 +1,7 @@
-*.tsx linguist-language=React
-src/App.tsx linguist-language=React
-src/index.tsx linguist-language=React
-src/components/*.tsx linguist-language=React
-src/pages/*.tsx linguist-language=React
-src/utils/ThemeContext.tsx linguist-language=React
+*.tsx linguist-language=TypeScript
+
 *.ts linguist-language=TypeScript
+
 *.css linguist-language=CSS
-*.html linguist-language=HTML 
+
+*.html linguist-language=HTML
