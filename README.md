@@ -1,6 +1,4 @@
-# My Blog Site
-
-Hey! 👋 This is a chill little blog site made with React. Here’s how you can get it going.
+#### Hey! 👋 This is a chill little blog site made with React. Here’s how you can get it going.
 
 ## Quick Start
 
