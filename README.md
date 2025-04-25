@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/badge/Made%20with-React%20&%20TypeScript-ffd5ff?style=for-the-badge&color=ffd5ff&logoColor=61DAFB&labelColor=1c1c29&logo=react" alt="Badge" />
+
 #### Hey! 👋 This is a chill little blog site made with React. Here’s how you can get it going.
 
 ## Quick Start
