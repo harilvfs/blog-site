@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTheme } from '../utils/ThemeContext';
@@ -8,6 +8,8 @@ import '../styles/navbar.css';
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hideNavbar, setHideNavbar] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
   const { isDarkMode } = useTheme();
 
@@ -15,24 +17,62 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Create a throttled scroll handler for better performance
+  const throttle = <T extends (...args: any[]) => any>(
+    callback: T,
+    delay: number
+  ) => {
+    let lastCall = 0;
+    return (...args: Parameters<T>) => {
+      const now = new Date().getTime();
+      if (now - lastCall < delay) {
+        return;
+      }
+      lastCall = now;
+      return callback(...args);
+    };
+  };
+
+  const handleScroll = useCallback(() => {
+    const currentScrollY = window.scrollY;
+    
+    // Show navbar when at the top, hide when scrolled down
+    if (currentScrollY < 30) {
+      setHideNavbar(false);
+    } else {
+      setHideNavbar(true);
+    }
+    
+    // Update the scroll state for shadow effect
+    setIsScrolled(currentScrollY > 20);
+    
+    // Update the last scroll position
+    setLastScrollY(currentScrollY);
+  }, []);
+
   useEffect(() => {
     setIsMenuOpen(false);
 
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+    const throttledHandleScroll = throttle(handleScroll, 50);
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    
+    // Initial call to set correct state
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', throttledHandleScroll);
+  }, [handleScroll]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [location]);
+  // Don't hide navbar when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      setHideNavbar(false);
+    }
+  }, [isMenuOpen]);
 
   return (
     <header 
-      className={`navbar ${isScrolled ? 'scrolled' : ''} ${isDarkMode ? 'dark' : 'light'}`}
+      className={`navbar ${isScrolled ? 'scrolled' : ''} ${hideNavbar ? 'hidden' : ''} ${isDarkMode ? 'dark' : 'light'}`}
+      aria-hidden={hideNavbar}
     >
       <div className="container navbar-container">
         <Link to="/" className="navbar-logo">
