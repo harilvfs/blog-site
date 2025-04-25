@@ -1,16 +1,11 @@
 [install]
-# Enable peer dependency auto-installation when running `bun install`
 peer_dependency_mode = "rollout"
-# Optimize for size on installs by disabling some features
 optimize_size = true
-# Disable progress bars in CI
 progress = false
 
 [dev]
-# Enable hot reloading
 hot_reload = true
 
 [build]
-# Add optimizations for the build process
 minify = true
 target = "es2020" 
