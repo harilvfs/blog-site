@@ -9,6 +9,7 @@ import BlogPostPage from './pages/BlogPostPage';
 import AboutPage from './pages/AboutPage';
 import ScrollToTop from './utils/ScrollToTop';
 import { ThemeProvider } from './utils/ThemeContext';
+import CursorFollower from './components/CursorFollower';
 import './styles/global.css';
 
 const AnimatedRoutes = () => {
@@ -77,6 +78,7 @@ const Layout = () => {
         <AnimatedRoutes />
       </main>
       <Footer />
+      <CursorFollower />
     </>
   );
 };
