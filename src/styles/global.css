@@ -93,6 +93,7 @@ body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
+  padding-top: 80px;
 }
 
 a {
@@ -275,7 +276,6 @@ a:hover {
   border: none;
 }
 
-/* Add responsive styles at the end of the file */
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
@@ -283,6 +283,10 @@ a:hover {
   
   html {
     font-size: 15px;
+  }
+  
+  body {
+    padding-top: 65px;
   }
 }
 
@@ -293,5 +297,9 @@ a:hover {
   
   html {
     font-size: 14px;
+  }
+  
+  body {
+    padding-top: 60px;
   }
 } 
