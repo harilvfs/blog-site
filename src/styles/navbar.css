@@ -224,6 +224,10 @@
 
 @media (max-width: 768px) {
   .navbar-backdrop {
+    display: none;
+  }
+  
+  .navbar-backdrop.active {
     display: block;
   }
 
@@ -244,11 +248,12 @@
     transition: transform 0.3s ease;
     z-index: 90;
     overflow-y: auto;
-    display: block;
+    display: none;
   }
   
   .navbar-menu.active {
     transform: translateX(0);
+    display: block;
   }
 
   .navbar-nav {
