@@ -223,8 +223,8 @@ const BlogListPage: React.FC = () => {
           className="blog-grid"
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          animate="visible"
+          key={filteredPosts.map(post => post.id).join('-')}
         >
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post, index) => (
