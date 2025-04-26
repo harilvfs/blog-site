@@ -58,6 +58,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .navbar-logo {
@@ -233,6 +236,25 @@
 
   .menu-toggle {
     display: flex;
+  }
+
+  .navbar {
+    width: 100%;
+    padding: 0.75rem 0;
+  }
+  
+  .navbar-container {
+    padding: 0 0.75rem;
+  }
+  
+  .navbar-logo-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 0.5rem;
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
   }
 
   .navbar-menu {
