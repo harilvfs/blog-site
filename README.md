@@ -28,13 +28,19 @@ This site auto-deploys using GitHub Actions:
 
 Your blog will show up at: `https://yourusername.github.io/blog-site`
 
+> [!NOTE]  
+> Remember to change the home page URL in the `package.json` file to your username.  
+> And important one — if you fork and change the repo name, make sure to change the `basename` in `App.tsx`:  
+> ```typescript
+> <Router basename="/your-repo-name">
+> ```
+
 ## What’s Inside
 
 - React + TypeScript
 - Write posts using Markdown
 - Looks good on phones and computers
 - Super fast with Bun
-
 
 ## Making It Yours
 
