@@ -3,7 +3,11 @@ import { motion } from 'framer-motion';
 
 const LoadingScreen: React.FC = () => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       style={{
         position: 'fixed',
         top: 0,
@@ -23,7 +27,7 @@ const LoadingScreen: React.FC = () => {
           opacity: [0.7, 1, 0.7]
         }}
         transition={{
-          duration: 0.8,
+          duration: 1.5,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -52,7 +56,7 @@ const LoadingScreen: React.FC = () => {
           <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
         </svg>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

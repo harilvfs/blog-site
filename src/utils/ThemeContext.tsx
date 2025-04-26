@@ -40,10 +40,12 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
       document.documentElement.classList.add('theme-initialized');
       
-      setIsInitializing(false);
+      setTimeout(() => {
+        setIsInitializing(false);
+      }, 800);
     };
 
-    applyTheme();
+    setTimeout(applyTheme, 200);
     
     return () => {
       document.documentElement.classList.remove('theme-initialized');

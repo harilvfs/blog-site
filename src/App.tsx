@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import BlogListPage from './pages/BlogListPage';
 import BlogPostPage from './pages/BlogPostPage';
 import AboutPage from './pages/AboutPage';
+import ScrollToTop from './utils/ScrollToTop';
 import { ThemeProvider } from './utils/ThemeContext';
 import './styles/global.css';
 
@@ -70,6 +71,7 @@ const AnimatedRoutes = () => {
 const Layout = () => {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <main className="main-content">
         <AnimatedRoutes />

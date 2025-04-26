@@ -216,9 +216,19 @@
   transform: translateY(0) rotate(-45deg);
 }
 
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar-backdrop {
     display: block;
+  }
+
+  .menu-toggle {
+    display: flex;
   }
 
   .navbar-menu {
@@ -252,10 +262,6 @@
     font-size: 1.25rem;
     width: 100%;
     padding: 0.5rem 0;
-  }
-
-  .menu-toggle {
-    display: flex;
   }
 
   .nav-theme-toggle {
