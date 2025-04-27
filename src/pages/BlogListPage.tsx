@@ -42,9 +42,11 @@ const BlogListPage: React.FC = () => {
   
   const springTransition = {
     type: "spring",
-    damping: 15,
-    stiffness: 80,
-    mass: 0.8
+    damping: 22,
+    stiffness: 70,
+    mass: 0.6,
+    restDelta: 0.001,
+    restSpeed: 0.001
   };
   
   const containerVariants = {
@@ -53,8 +55,9 @@ const BlogListPage: React.FC = () => {
       opacity: 1,
       transition: {
         when: "beforeChildren",
-        staggerChildren: 0.06,
-        duration: 0.4
+        staggerChildren: 0.04,
+        duration: 0.6,
+        ease: "easeOut"
       }
     }
   };

@@ -20,9 +20,11 @@ const cardVariants = {
     y: 0,
     transition: { 
       type: "spring", 
-      damping: 12, 
-      stiffness: 100,
-      mass: 0.9
+      damping: 20,
+      stiffness: 80,
+      mass: 0.8,
+      restDelta: 0.001,
+      restSpeed: 0.001
     }
   }
 };
@@ -45,8 +47,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
         boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
         transition: { 
           type: "spring", 
-          stiffness: 300, 
-          damping: 15 
+          stiffness: 200,
+          damping: 20,
+          mass: 0.6,
+          restDelta: 0.001,
+          duration: 0.3
         } 
       }}
     >

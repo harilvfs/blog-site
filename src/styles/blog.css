@@ -7,6 +7,8 @@
   backface-visibility: hidden;
   overflow-x: hidden;
   width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -15,6 +17,7 @@
   width: 100%;
   box-sizing: border-box;
   max-width: 100%;
+  transform: translateZ(0);
 }
 
 .page-header {
@@ -331,8 +334,12 @@
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .no-results {

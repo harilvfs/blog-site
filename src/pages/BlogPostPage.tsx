@@ -29,7 +29,9 @@ const BlogPostPage: React.FC = () => {
       opacity: 1,
       transition: { 
         when: "beforeChildren",
-        staggerChildren: 0.15
+        staggerChildren: 0.1,
+        ease: "easeOut",
+        duration: 0.5
       }
     }
   };
@@ -41,8 +43,11 @@ const BlogPostPage: React.FC = () => {
       y: 0,
       transition: { 
         type: "spring", 
-        damping: 15, 
-        stiffness: 100 
+        damping: 22,
+        stiffness: 70,
+        mass: 0.6,
+        restDelta: 0.001,
+        restSpeed: 0.001
       }
     }
   };
@@ -53,7 +58,7 @@ const BlogPostPage: React.FC = () => {
       opacity: 1, 
       scale: 1,
       transition: { 
-        duration: 0.8,
+        duration: 0.6,
         ease: [0.25, 0.1, 0.25, 1] 
       }
     }
