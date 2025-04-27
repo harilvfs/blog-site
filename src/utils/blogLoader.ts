@@ -14,6 +14,9 @@ const blogPosts: BlogPost[] = [
 ## Introduction
 Python is a powerful programming language widely used for development, scripting, and automation. This guide will walk you through installing Python on Arch Linux or any Arch-based distribution and setting up a virtual environment without relying on \`pip\`. If you encounter \`pip\` errors, we will also explain the reasons and solutions.
 
+> [!NOTE]
+> This guide is specifically written for Arch Linux and Arch-based distributions. If you're using a different Linux distribution, the package installation commands will differ.
+
 ## Installing Python
 On Arch Linux, you can install Python easily using the package manager:
 
@@ -23,8 +26,14 @@ sudo pacman -S python
 
 This will install the latest version of Python available in the official Arch repositories.
 
+> [!WARNING]
+> Do not remove the default Python installation on Arch Linux as many system components depend on it. Doing so could break your system.
+
 ## Why Avoid \`pip\` for Installing Python Packages?
 Many users rely on \`pip\` for installing Python packages, but using \`pip\` system-wide can lead to conflicts with system packages managed by \`pacman\`. This can cause issues when upgrading your system or installing software that depends on specific Python versions.
+
+> [!IMPORTANT]
+> Never use \`sudo pip install\` for installing packages system-wide on Arch Linux. This can break system packages and cause dependency conflicts.
 
 ## Setting Up a Virtual Environment
 A virtual environment allows you to create an isolated Python environment, preventing conflicts with system packages. To set up a virtual environment:
@@ -51,6 +60,9 @@ A virtual environment allows you to create an isolated Python environment, preve
 
 4. Your terminal prompt should now indicate that you are inside a virtual environment.
 
+> [!TIP]
+> You can add an alias to your shell configuration file to quickly activate your virtual environments. For example: \`alias venv='source venv/bin/activate'\`
+
 ## Handling \`pip\` Errors
 If you encounter errors when using \`pip\`, it may be due to missing dependencies or conflicts with system packages. Some common errors include:
 
@@ -68,6 +80,9 @@ If you encounter errors when using \`pip\`, it may be due to missing dependencie
   \`\`\`bash
   pip install package_name
   \`\`\`
+
+> [!CAUTION]
+> When installing Python packages that require compilation, make sure you have the base-devel package group installed: \`sudo pacman -S base-devel\`
 
 ## Conclusion
 Using a virtual environment is the best practice for Python development, as it isolates project dependencies and prevents system conflicts. By following this guide, you now have a clean and efficient Python setup that avoids modifying system-wide packages.
@@ -87,6 +102,9 @@ Using a virtual environment is the best practice for Python development, as it i
 
 This guide provides a step-by-step tutorial on how to create, build, and upload a package to the Arch User Repository (AUR). Follow along to learn the entire process from setting up SSH keys to publishing your package.
 
+> [!NOTE]
+> This guide assumes you already have an Arch User Repository account. If you don't, visit https://aur.archlinux.org and create one first.
+
 ## Step 1: Set Up SSH Keys for AUR Access
 
 Before you can push to the AUR, you need to set up SSH authentication.
@@ -99,6 +117,9 @@ cat ~/.ssh/id_rsa.pub
 \`\`\`
 
 Copy the output and add it to your [AUR account](https://aur.archlinux.org/account/) under the SSH key section.
+
+> [!IMPORTANT]
+> Never share your private SSH key. Only copy the contents of your public key (id_rsa.pub) to the AUR website.
 
 To verify SSH connectivity:
 
@@ -145,6 +166,9 @@ package() {
 }
 \`\`\`
 
+> [!WARNING]
+> Using 'SKIP' for sha256sums is only recommended for testing. For production packages, always provide actual checksums to ensure integrity.
+
 ## Step 3: Generate \`.SRCINFO\`
 
 Generate the \`.SRCINFO\` file:
@@ -152,6 +176,9 @@ Generate the \`.SRCINFO\` file:
 \`\`\`sh
 makepkg --printsrcinfo > .SRCINFO
 \`\`\`
+
+> [!TIP]
+> If you modify your PKGBUILD, always regenerate the .SRCINFO file. AUR uses this file to display package information on the website.
 
 ## Step 4: Initialize Git and Push to AUR
 
@@ -164,6 +191,9 @@ git commit -m "Initial release of Carch"
 git remote add aur ssh://aur@aur.archlinux.org/carch.git
 git push aur master
 \`\`\`
+
+> [!CAUTION]
+> Ensure your package name is unique and doesn't conflict with existing AUR or official repository packages. Check the AUR website before pushing.
 
 ## Step 5: Install and Test the AUR Package
 
@@ -202,6 +232,9 @@ makepkg -si
 
 Chaotic AUR is an unofficial repository that provides pre-built binaries of popular AUR packages, reducing the need to compile them manually. This guide will walk you through setting it up on Arch Linux or any Arch-based distribution.
 
+> [!NOTE]
+> Chaotic AUR is not officially supported by Arch Linux. Use it at your own risk and be aware that it may affect system stability.
+
 ## Adding Chaotic AUR Repository
 
 To enable Chaotic AUR, follow these steps:
@@ -220,6 +253,9 @@ After enabling, update the package database:
 sudo pacman -Sy
 \`\`\`
 
+> [!WARNING]
+> Running \`pacman -Sy\` without a full upgrade (\`pacman -Syu\`) can lead to partial upgrades which may break packages. It's generally safer to always run a full system upgrade.
+
 ### 2. Import the Chaotic AUR Key
 Before adding the repository, import the signing key:
 
@@ -228,6 +264,9 @@ sudo pacman-key --init
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
 \`\`\`
+
+> [!IMPORTANT]
+> Always verify GPG keys from a trusted source before importing them. The key shown here may change in the future.
 
 ### 3. Add the Chaotic AUR Repository
 Append the following lines to your \`/etc/pacman.conf\` file:
@@ -289,6 +328,9 @@ sudo rm -f /etc/pacman.d/chaotic-mirrorlist
 sudo pacman -Sy
 \`\`\`
 
+> [!CAUTION]
+> If you have installed packages from Chaotic AUR, removing the repository may affect future updates for those packages. Consider reinstalling them from the official repositories or AUR.
+
 ## Conclusion
 Chaotic AUR is a great way to install AUR packages without compiling them manually. By following this guide, you can easily set up and use Chaotic AUR on your Arch-based system.
 `,
@@ -307,6 +349,9 @@ Chaotic AUR is a great way to install AUR packages without compiling them manual
 
 React and TypeScript make a powerful combination for building robust web applications. TypeScript adds static typing to JavaScript, which can help catch errors early and improve the developer experience with better tooling and autocompletion.
 
+> [!NOTE]
+> This guide assumes you have Node.js and npm already installed on your system. If not, install them before proceeding.
+
 ## Setting Up Your Project
 
 You can create a new React project with TypeScript using Create React App:
@@ -316,6 +361,9 @@ npx create-react-app my-app --template typescript
 \`\`\`
 
 This will set up a new React project with TypeScript configuration already in place.
+
+> [!TIP]
+> You can also use Vite for a faster development experience: \`npm create vite@latest my-app -- --template react-ts\`
 
 ## Writing Your First Component
 
@@ -357,6 +405,9 @@ export default Button;
 
 In this example, we define an interface \`ButtonProps\` that specifies the props our component can accept. The \`React.FC<ButtonProps>\` syntax tells TypeScript that this is a functional component that accepts props of type \`ButtonProps\`.
 
+> [!IMPORTANT]
+> Recent React documentation recommends not using \`React.FC\` and instead using plain function declarations with explicit return types when needed. Consider using: \`function Button({ text, onClick }: ButtonProps): JSX.Element\`
+
 ## Type Safety Benefits
 
 Using TypeScript with React provides several benefits:
@@ -366,9 +417,15 @@ Using TypeScript with React provides several benefits:
 3. **Refactoring Support**: TypeScript makes it easier to refactor your code with confidence.
 4. **Documentation**: Types serve as a form of documentation that stays up-to-date with your code.
 
+> [!CAUTION]
+> TypeScript's type checking only happens at compile time. It won't catch runtime errors such as API responses with unexpected formats, so always add proper error handling.
+
 ## Conclusion
 
 React and TypeScript are a great combination for building maintainable web applications. The initial learning curve is worth the long-term benefits in code quality and developer productivity.
+
+> [!WARNING]
+> Don't overuse TypeScript features like \`any\` or type assertions (\`as\`), as they bypass TypeScript's type checking and reduce the benefits of using TypeScript in the first place.
 `,
     coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     tags: ['React', 'TypeScript', 'Web Development']
