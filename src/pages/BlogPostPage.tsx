@@ -97,7 +97,10 @@ const BlogPostPage: React.FC = () => {
                 className="post-meta"
                 variants={elementVariants}
               >
-                <time className="post-date">{post.date}</time>
+                <div className="post-meta-info">
+                  <time className="post-date">{post.date}</time>
+                  <span className="post-author">by {post.author}</span>
+                </div>
                 {post.tags && post.tags.length > 0 && (
                   <div className="post-tags">
                     {post.tags.map(tag => (
@@ -120,7 +123,10 @@ const BlogPostPage: React.FC = () => {
             >
               <h1 className="post-title">{post.title}</h1>
               <div className="post-meta">
-                <time className="post-date">{post.date}</time>
+                <div className="post-meta-info">
+                  <time className="post-date">{post.date}</time>
+                  <span className="post-author">by {post.author}</span>
+                </div>
                 {post.tags && post.tags.length > 0 && (
                   <div className="post-tags">
                     {post.tags.map(tag => (

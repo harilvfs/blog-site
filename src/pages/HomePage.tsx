@@ -133,6 +133,7 @@ const HomePage: React.FC = () => {
                 date={post.date}
                 coverImage={post.coverImage}
                 tags={post.tags}
+                author={post.author}
               />
             ))}
           </motion.div>

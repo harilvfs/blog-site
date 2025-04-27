@@ -7,6 +7,7 @@ const blogPosts: BlogPost[] = [
     slug: 'installing-python-and-setting-up-a-virtual-environment',
     excerpt: 'A comprehensive guide on installing Python and setting up a virtual environment without using pip.',
     date: 'February 20, 2025',
+    author: 'Hari Chalise',
     content: `
 # Installing Python and Setting Up a Virtual Environment
 
@@ -80,6 +81,7 @@ Using a virtual environment is the best practice for Python development, as it i
     slug: 'comprehensive-guide-to-creating-and-uploading-an-aur-package',
     excerpt: 'Step-by-step guide to creating, building, and submitting a package to the Arch User Repository (AUR).',
     date: 'February 19, 2025',
+    author: 'Hari Chalise',
     content: `
 # Comprehensive Guide to Creating and Uploading an AUR Package
 
@@ -194,6 +196,7 @@ makepkg -si
     slug: 'install-chaotic-aur-on-arch-linux',
     excerpt: 'A clean and enhanced guide to installing Chaotic AUR on Arch Linux and its derivatives.',
     date: 'February 18, 2025',
+    author: 'Hari Chalise',
     content: `
 # Install Chaotic AUR on Arch Linux
 
@@ -292,12 +295,13 @@ Chaotic AUR is a great way to install AUR packages without compiling them manual
     coverImage: 'https://raw.githubusercontent.com/harilvfs/blogs/refs/heads/main/content/post/chaotic-aur/arch.jpg',
     tags: ['arch linux', 'chaotic aur', 'aur', 'linux']
   },
-    {
+  {
     id: '4',
     title: 'Getting Started with React and TypeScript',
     slug: 'getting-started-with-react-and-typescript',
     excerpt: 'Learn how to set up a new React project with TypeScript and understand the basics of TypeScript in React components.',
     date: 'Jan 23, 2025',
+    author: 'Hari Chalise',
     content: `
 # Getting Started with React and TypeScript
 
@@ -375,6 +379,7 @@ React and TypeScript are a great combination for building maintainable web appli
     slug: 'building-beautiful-animations-with-framer-motion',
     excerpt: 'Explore how to create smooth, performant animations in your React applications using the Framer Motion library.',
     date: 'Jan 24, 2025',
+    author: 'Hari Chalise',
     content: `
 # Building Beautiful Animations with Framer Motion
 
@@ -567,6 +572,7 @@ By adding thoughtful animations to your UI, you can significantly improve the us
     slug: 'creating-a-markdown-blog-with-react',
     excerpt: 'Learn how to build a blog that renders content from Markdown files using React and related libraries.',
     date: 'Jan 25, 2025',
+    author: 'Hari Chalise',
     content: `
 # Creating a Markdown Blog with React
 
@@ -786,15 +792,24 @@ With this foundation, you're well on your way to creating a beautiful and functi
 ];
 
 export const getBlogPosts = (): BlogPostMeta[] => {
-  return blogPosts.map(({ id, title, slug, excerpt, date, coverImage, tags }) => ({
-    id,
-    title,
-    slug,
-    excerpt,
-    date,
-    coverImage,
-    tags
-  }));
+  const postsWithParsedDates = blogPosts.map(post => {
+    const { id, title, slug, excerpt, date, coverImage, tags, author } = post;
+    return {
+      id,
+      title,
+      slug,
+      excerpt,
+      date,
+      coverImage,
+      tags,
+      author,
+      dateObj: new Date(date)
+    };
+  });
+  
+  const sortedPosts = postsWithParsedDates.sort((a, b) => b.dateObj.getTime() - a.dateObj.getTime());
+  
+  return sortedPosts.map(({ dateObj, ...post }) => post);
 };
 
 export const getBlogPostById = (id: string): BlogPost | undefined => {

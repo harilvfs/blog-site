@@ -7,6 +7,7 @@ export interface BlogPost {
   content: string;
   coverImage?: string;
   tags?: string[];
+  author: string;
 }
 
 export interface BlogPostMeta {
@@ -17,4 +18,5 @@ export interface BlogPostMeta {
   date: string;
   coverImage?: string;
   tags?: string[];
+  author: string;
 } 

@@ -84,14 +84,45 @@
   gap: 1.5rem;
 }
 
+.post-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .post-date {
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-muted);
 }
 
-.post-hero-content .post-date {
+.post-author {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.post-author::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
+}
+
+.post-hero-content .post-date,
+.post-hero-content .post-author {
   color: rgba(255, 255, 255, 0.9);
+}
+
+.post-hero-content .post-author::before {
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .post-tags {

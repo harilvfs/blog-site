@@ -67,10 +67,36 @@
   gap: 0.5rem;
 }
 
+.blog-card-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .blog-card-date {
   font-size: 0.875rem;
   color: var(--text-muted);
   font-weight: 500;
+}
+
+.blog-card-author {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+.blog-card-author::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
 }
 
 .blog-card-tags {

@@ -10,6 +10,7 @@ interface BlogCardProps {
   date: string;
   coverImage?: string;
   tags?: string[];
+  author: string;
 }
 
 const cardVariants = {
@@ -32,7 +33,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
   excerpt, 
   date, 
   coverImage,
-  tags 
+  tags,
+  author
 }) => {
   return (
     <motion.article 
@@ -71,7 +73,10 @@ const BlogCard: React.FC<BlogCardProps> = ({
         )}
         <div className="blog-card-content">
           <div className="blog-card-meta">
-            <time className="blog-card-date">{date}</time>
+            <div className="blog-card-meta-info">
+              <time className="blog-card-date">{date}</time>
+              <span className="blog-card-author">by {author}</span>
+            </div>
             {tags && tags.length > 0 && (
               <div className="blog-card-tags">
                 {tags.slice(0, 2).map(tag => (
