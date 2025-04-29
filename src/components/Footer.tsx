@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
         >
           <Link to="/" className="footer-logo">
             <motion.img 
-              src="/blog-site/images/aayush.png" 
+              src="/images/aayush.png" 
               alt="Aayush Blogs"
               width="40"
               height="40"
