@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
       <div className="container navbar-container">
         <Link to="/" className="navbar-logo">
           <img 
-            src="/blog-site/images/aayush.png" 
+            src="images/aayush.png" 
             alt="Aayush" 
             className="navbar-logo-icon" 
           />

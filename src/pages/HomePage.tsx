@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
               }}
             >
               <motion.img 
-                src="/blog-site/images/aayush.png" 
+                src="/images/aayush.png" 
                 alt="Aayush" 
                 className="profile-image"
                 whileHover={{ 
