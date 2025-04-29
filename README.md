@@ -35,6 +35,8 @@ Your blog will show up at: `https://yourusername.github.io/blog-site`
 > <Router basename="/your-repo-name">
 > ```
 
+---
+
 > [!IMPORTANT]  
 > Since I'm deploying the site with Cloudflare, I had to either change or remove the `basename` so everything works properly there.  
 > So I’ve removed the router `basename`, updated the image paths, and also removed the `homepage` field in `package.json`.  
