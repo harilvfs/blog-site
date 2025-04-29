@@ -1,7 +1,7 @@
 {
   "name": "blog-site",
   "private": true,
-  "homepage": "https://harilvfs.github.io/blog-site/",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
