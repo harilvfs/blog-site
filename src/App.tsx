@@ -86,7 +86,7 @@ const Layout = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename={import.meta.env.BASE_URL}>
         <Layout />
       </Router>
     </ThemeProvider>
