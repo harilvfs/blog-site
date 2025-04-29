@@ -86,7 +86,7 @@ const Layout = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-<Router basename="/">
+      <Router>
         <Layout />
       </Router>
     </ThemeProvider>
