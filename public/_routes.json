@@ -1,5 +1,20 @@
 {
   "version": 1,
   "include": ["/*"],
-  "exclude": []
-} 
+  "exclude": [
+    "/assets/*",
+    "/images/*",
+    "/css/*",
+    "/js/*",
+    "/api/*",
+    "/_next/*",
+    "/favicon.ico",
+    "/robots.txt"
+  ],
+  "routes": [
+    {
+      "src": "/*",
+      "dest": "/index.html"
+    }
+  ]
+}
