@@ -14,11 +14,13 @@ const blogPosts: BlogPost[] = [
 ## Introduction
 Python is a powerful programming language widely used for development, scripting, and automation. This guide will walk you through installing Python on Arch Linux or any Arch-based distribution and setting up a virtual environment without relying on \`pip\`. If you encounter \`pip\` errors, we will also explain the reasons and solutions.
 
-> [!NOTE]
-> This guide is specifically written for Arch Linux and Arch-based distributions. If you're using a different Linux distribution, the package installation commands will differ.
-
 ## Installing Python
-On Arch Linux, you can install Python easily using the package manager:
+
+> [!NOTE]
+> Python comes preinstalled on **all** major Linux distributions, as many core components and tools depend on it. However, if it's missing or you need to upgrade or reinstall it, follow the instructions below.
+
+### Arch Linux
+You can install Python easily using the package manager:
 
 \`\`\`bash
 sudo pacman -S python
@@ -26,8 +28,23 @@ sudo pacman -S python
 
 This will install the latest version of Python available in the official Arch repositories.
 
-> [!WARNING]
-> Do not remove the default Python installation on Arch Linux as many system components depend on it. Doing so could break your system.
+### Debian / Ubuntu
+Use \`apt\` to install Python:
+
+\`\`\`bash
+sudo apt update
+sudo apt install python3
+\`\`\`
+
+### Fedora
+Use \`dnf\` to install Python:
+
+\`\`\`bash
+sudo dnf install python3
+\`\`\`
+
+**Fedora comes with Python 3 pre-installed, but this command ensures it's available and up-to-date.**
+
 
 ## Why Avoid \`pip\` for Installing Python Packages?
 Many users rely on \`pip\` for installing Python packages, but using \`pip\` system-wide can lead to conflicts with system packages managed by \`pacman\`. This can cause issues when upgrading your system or installing software that depends on specific Python versions.
