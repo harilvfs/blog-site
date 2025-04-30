@@ -1,9 +1,7 @@
 name: Deploy to GitHub Pages (Official)
 
 on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+ workflow_dispatch:
 
 permissions:
   contents: read
