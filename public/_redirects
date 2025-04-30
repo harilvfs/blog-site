@@ -1,1 +1,14 @@
-/* /index.html 200 
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const url = new URL(request.url)
+
+  // If it's any other route than /index.html, send them to index.html
+  if (!url.pathname.startsWith('/index.html') && !url.pathname.startsWith('/static/')) {
+    return Response.redirect('/index.html', 200)
+  }
+
+  return fetch(request)
+}
