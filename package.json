@@ -1,7 +1,7 @@
 {
   "name": "blog-site",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://blogs.chalisehari.com.np",
   "baseUrl": "blog-site/",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
