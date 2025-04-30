@@ -104,7 +104,7 @@ If you encounter errors when using \`pip\`, it may be due to missing dependencie
 ## Conclusion
 Using a virtual environment is the best practice for Python development, as it isolates project dependencies and prevents system conflicts. By following this guide, you now have a clean and efficient Python setup that avoids modifying system-wide packages.
 `,
-    coverImage: 'https://raw.githubusercontent.com/harilvfs/blogs/refs/heads/main/content/post/python-pip/python.jpg',
+    coverImage: '/images/post/python.jpg',
     tags: ['Python', 'Virtual Environment', 'Arch Linux']
   },
   {
@@ -234,7 +234,7 @@ makepkg -si
 - Use \`makepkg -cf\` to test builds before uploading.
 - Ensure all dependencies are correctly listed.
 `,
-    coverImage: 'https://raw.githubusercontent.com/harilvfs/blogs/refs/heads/main/content/post/aur-package/archlinuxb.png',
+    coverImage: '/images/post/archlinuxb.png',
     tags: ['PKGBUILD', 'AUR', 'Arch Linux']
   },
   {
@@ -351,7 +351,7 @@ sudo pacman -Sy
 ## Conclusion
 Chaotic AUR is a great way to install AUR packages without compiling them manually. By following this guide, you can easily set up and use Chaotic AUR on your Arch-based system.
 `,
-    coverImage: 'https://raw.githubusercontent.com/harilvfs/blogs/refs/heads/main/content/post/chaotic-aur/arch.jpg',
+    coverImage: '/images/post/arch.jpg',
     tags: ['arch linux', 'chaotic aur', 'aur', 'linux']
   },
   {
