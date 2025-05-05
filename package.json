@@ -21,7 +21,7 @@
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
     "start": "bun run react-scripts start",
