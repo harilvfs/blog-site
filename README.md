@@ -19,7 +19,7 @@ bun run build
 
 ## Deploying to GitHub Pages
 
-This site auto-deploys using GitHub Actions:
+If you want to deploy the site, you can use my workflow:
 
 - Take a look at `.github/workflows/pages.yml`
 - Go to your repo’s Settings > Pages
@@ -28,21 +28,12 @@ This site auto-deploys using GitHub Actions:
 
 Your blog will show up at: `https://yourusername.github.io/blog-site`
 
-> [!NOTE]  
-> Remember to change the home page URL in the `package.json` file to your username.  
-> And important one — if you fork and change the repo name, make sure to change the `basename` in `App.tsx`:  
-> ```typescript
-> <Router basename="/your-repo-name">
-> ```
-
----
-
-## Update
-
-> [!IMPORTANT]  
-> Since I'm deploying the site with Cloudflare, I had to either change or remove the `basename` so everything works properly there.  
-> So I’ve removed the router `basename`, updated the image paths, and also removed the `homepage` field in `package.json`.  
->  
+> [!IMPORTANT]
+>
+> ## Update
+> 
+> As this site is for my personal use, and I obviously prefer Cloudflare for deployment:
+> 
 > If you want to deploy it using **GitHub Pages**, you’ll need to make a few changes:  
 >  
 > **In `src/App.tsx`:**
@@ -55,8 +46,12 @@ Your blog will show up at: `https://yourusername.github.io/blog-site`
 > ```json
 > "homepage": "https://your-username.github.io/your-repo-name"
 > ```
-> You can remove or leave the `baseUrl` field.
->  
+>
+> Also, change the `baseUrl` to your repo name:
+> ```json
+> "baseUrl": "your-repo-name/",
+> ```
+>
 > Update the image paths in the following files:
 >  
 > **In `src/components/Footer.tsx`:**
@@ -74,22 +69,12 @@ Your blog will show up at: `https://yourusername.github.io/blog-site`
 > src="/images/aayush.png" → src="/your-repo-name/images/your-image.png"
 > ```
 >  
-> After making these changes, the site should deploy and work fine on **GitHub Pages**.  
-> But just a heads-up — it probably won’t work perfectly with **Cloudflare** in that case.  
->  
-> So yeah, the current setup in the repo is configured to work with **Cloudflare**, but it might break on GitHub Pages.  
->  
-> **Choose whichever setup works best for you. 🙌**
+> Also, if you're using GitHub Pages, change `HashRouter` to `BrowserRouter` in `src/App.tsx`:
+> ```typescript
+> import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+> ```
 
-
-## What’s Inside
-
-- React + TypeScript
-- Write posts using Markdown
-- Looks good on phones and computers
-- Super fast with Bun
-
-## Making It Yours
+## Blog Posts
 
 Wanna change the posts?
 Just edit the file: `src/utils/blogLoader.ts`
